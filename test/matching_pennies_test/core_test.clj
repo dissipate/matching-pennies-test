@@ -2,6 +2,12 @@
   (:require [clojure.test :refer :all]
             [matching-pennies-test.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest determine-round-result-test
+  (testing "round result mappings"
+    (is (= (determine-round-result ['t' 't']) ['w' 'l']))
+    (is (= (determine-round-result ['h' 'h']) ['w' 'l']))
+    (is (= (determine-round-result ['t' 'h']) ['l' 'w']))
+    (is (= (determine-round-result ['h' 't']) ['l' 'w']))
+    (is (= (determine-round-result ['blah' 't']) nil))
+    (is (= (determine-round-result ['t' 'blah']) nil))
+    (is (= (determine-round-result ['blah' 'blah']) nil))))
