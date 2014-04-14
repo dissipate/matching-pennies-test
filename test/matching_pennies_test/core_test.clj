@@ -11,3 +11,7 @@
     (is (= (determine-round-result ['blah' 't']) nil))
     (is (= (determine-round-result ['t' 'blah']) nil))
     (is (= (determine-round-result ['blah' 'blah']) nil))))
+
+(deftest ^:integration test-slurp
+  (testing "slurp test"
+    (is (not= (count (slurp "http://www.google.com")) 0))))
