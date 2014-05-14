@@ -8,9 +8,9 @@
     (is (= (determine-round-result ['h' 'h']) ['w' 'l']))
     (is (= (determine-round-result ['t' 'h']) ['l' 'w']))
     (is (= (determine-round-result ['h' 't']) ['l' 'w']))
-    (is (= (determine-round-result ['blah' 't']) nil))
-    (is (= (determine-round-result ['t' 'blah']) nil))
-    (is (= (determine-round-result ['blah' 'blah']) nil))))
+    (is (thrown? AssertionError (determine-round-result ['blah' 't'])))
+    (is (thrown? AssertionError (determine-round-result ['t' 'blah'])))
+    (is (thrown? AssertionError (determine-round-result ['blah' 'blah'])))))
 
 (deftest ^:integration test-slurp
   (testing "slurp test"

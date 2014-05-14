@@ -1,14 +1,12 @@
 (ns matching-pennies-test.core)
 
 (defn determine-round-result [[matcher-choice mismatcher-choice]]
+  {:pre [(contains? #{'h' 't'} matcher-choice), (contains? #{'h' 't'} mismatcher-choice)]
+   :post [(or (= % ['w' 'l']) (= % ['l' 'w']))] }
   "Maps matcher's choice and mismatcher's choice to win/loss outcome"
-  (let [valid-choices #{'h' 't'}]
-   (if (and (contains? valid-choices matcher-choice)
-            (contains? valid-choices mismatcher-choice))
        (if (= matcher-choice mismatcher-choice)
            ['w' 'l']
-           ['l' 'w'])
-    nil)))
+           ['l' 'w']))
 
 
 
